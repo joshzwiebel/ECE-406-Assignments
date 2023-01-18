@@ -6,6 +6,8 @@ Fill in these functions and submit on LEARN.
 import math
 
 # part (i) for modular exponentiation -- fill in the code below
+
+
 def modexp(x, y, N):
     """
     Input: Three positive integers x and y, and N.
@@ -13,18 +15,12 @@ def modexp(x, y, N):
     """
     if y == 0:
         return 1
-    z = modexp(x,math.floor(y/2),N)
-    if y % 2 ==0:
-        return z**2 %N
+    z = modexp(x, math.floor(y/2), N)
+    if y % 2 == 0:
+        return z**2 % N
     else:
-        return (x**y)%N
+        return (x**y) % N
 
-
-def Euclid(a,b):
-    if b == 0:
-        return a
-    else:
-        return Euclid(b,a%b)
 
 # part (ii) for extended Euclid  -- fill in the code below
 def extended_euclid(a, b):
@@ -34,10 +30,8 @@ def extended_euclid(a, b):
             such that d = gcd(a, b) and ax + by = d
     """
     if b == 0:
-        return (1,0,a)
-    x,y,d = extended_euclid(b,a%b)
-
-    
+        return (1, 0, a)
+    x, y, d = extended_euclid(b, a % b)
     return y, x - (a//b)*y, d
 
 
@@ -70,6 +64,7 @@ def main():
         print("extended_euclid passed test 2")
     else:
         print("extended_euclid failed test 2")
+
 
 if __name__ == '__main__':
     main()
