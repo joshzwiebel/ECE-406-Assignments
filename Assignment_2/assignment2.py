@@ -21,6 +21,16 @@ def modexp(x, y, N):
     else:
         return (x**y) % N
 
+def modexp1(x, y, N):
+    """
+    Input: Three positive integers x and y, and N.
+    Output: The number x^y mod N
+    """
+    if N == 1:
+        return 0
+    for i in range(y-1):
+        x = (x * x) % N
+    return x
 
 # part (ii) for extended Euclid  -- fill in the code below
 def extended_euclid(a, b):
@@ -56,7 +66,9 @@ def prime_generator(N):
     """
     for _ in range(1000):
         p = random.randint(2, N)
+        print(p)
         if primality(p):
+            print("prime: ", p)
             return p
     return 0
 
@@ -79,7 +91,9 @@ def main():
         q = prime_generator(10000000)
         N = p * q
         e = 5
+        print("N: ", N)
         _, b, d = extended_euclid(e, (p-1)*(q-1))
+        print(d ,"d" , b, "b")
     d = b % N
     encoded = modexp(x, e, N)
     decoded = modexp(encoded, d, N)
