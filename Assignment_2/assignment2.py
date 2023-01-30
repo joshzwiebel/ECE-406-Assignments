@@ -22,18 +22,6 @@ def modexp(x, y, N):
 		return (x ** y) % N
 
 
-def modexp1(x, y, N):
-	"""
-	Input: Three positive integers x and y, and N.
-	Output: The number x^y mod N
-	"""
-	if N == 1:
-		return 0
-	for i in range(y - 1):
-		x = (x * x) % N
-	return x
-
-
 # part (ii) for extended Euclid  -- fill in the code below
 
 
@@ -59,7 +47,8 @@ def primality(N):
 	"""
 	for _ in range(10):
 		a = random.randint(1, N - 1)
-		if modexp(a, N - 1, N) != 1:
+		#if modexp(a, N - 1, N) != 1:
+		if pow(a, N - 1, N) != 1:
 			return False
 	return True
 
